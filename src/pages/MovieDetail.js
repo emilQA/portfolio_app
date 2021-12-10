@@ -1,25 +1,54 @@
 import React, {useEffect, useState} from 'react';
-import {} from '../styles';
+import {Awards, AwardStyle, Details, HeadLine} from '../styles';
 import {useHistory} from "react-router-dom";
 import {MovieState} from "../movieState";
 
 const MovieDetail = () => {
 
     const history = useHistory();
-    const url = useHistory.location.pathname;
-    const [movies , setMovies ]  = useState(MovieState);
-    const [movie , setMovie] = useState(null);
+    const url = history.location.pathname;
+    const [movies, setMovies] = useState(MovieState);
+    const [movie, setMovie] = useState(null);
 
     // USE_EFFECT
-useEffect(()=>{
-    const currentMovie = movies.filter((stateMovie)=>stateMovie.url === url);
-    setMovie(currentMovie);
-},[movies,url])
+    useEffect(() => {
+        const currentMovie = movies.filter((stateMovie) => stateMovie.url === url);
+        setMovie(currentMovie[0]);
+    }, [movies, url])
 
     return (
-        <div>
-            <h1>MovieDetail</h1>
-        </div>
+        <>
+            {movie && (
+                <Details>
+                    <HeadLine>
+                        <h2>{movie.title}</h2>
+                        <img src={movie.mainImg} alt="movie"/>
+                    </HeadLine>
+                    <Awards>
+                        {movie.awards.map((award) => (
+                            <Award
+                                title={award.title}
+                                description={award.description}
+                                id={award.title}
+                            />
+                        ))}
+                    </Awards>
+                    <imageDisplay>
+                        <img src={movie.secondaryImg} alt="secondary"/>
+                    </imageDisplay>
+                </Details>
+            )}
+        </>
+    )
+}
+
+
+const Award = ({title , description}) => {
+    return (<AwardStyle>
+            <h3>{title}</h3>
+            <div className='line'></div>
+            <p>{description}</p>
+        </AwardStyle>
     )
 }
 
