@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Awards, AwardStyle, Details, HeadLine} from '../styles';
 import {useHistory} from "react-router-dom";
 import {MovieState} from "../movieState";
-import {motion} from "framer-motion";
+// import {motion} from "framer-motion";
 import {PageAnimation} from "../animation";
 
 const MovieDetail = () => {

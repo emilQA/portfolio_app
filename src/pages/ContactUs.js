@@ -5,7 +5,13 @@ import {PageAnimation} from "../animation";
 const Contactus = () => {
 
     return (
-        <motion.div variants={PageAnimation} initial="hidden" animate="show"  exit="exit">
+        <motion.div
+            variants={PageAnimation}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            style={{background:"#fff"}}
+        >
             <h1>contact</h1>
         </motion.div>
     )

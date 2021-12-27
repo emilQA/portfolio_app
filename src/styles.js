@@ -174,7 +174,7 @@ export const Movie = styled.div`
   }
 `;
 
-export const Details = styled.div`
+export const Details = styled(motion.div)`
   color: white;
 `;
 
